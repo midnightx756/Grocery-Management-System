@@ -21,4 +21,3 @@ The GMS will provide a user-friendly interface for store owners and staff to eas
 
 And my info:
 I am Graahil Rastogi
-Graphic Era Deemed to be University
