@@ -4,6 +4,10 @@
 char* encode(char a[])//Uses simple ceaser cipher to encode password
 {
     char* b=(char*)malloc(100*sizeof(char));
+    if(b==NULL){
+       printf("Failed to allocate memory");
+       exit(0);
+    }
     int i;
     for(i=0;a[i];i++)
     {
@@ -22,10 +26,15 @@ char* encode(char a[])//Uses simple ceaser cipher to encode password
     return b;
 }
 
+//Decodes the string
 char* decode(char *a){
     char*b = (char*)calloc(100,sizeof(char));
+    if(b==NULL){
+       printf("Failed to allocate memory");
+       exit(0);
+    }
     int i;
-    for(i=0;i<a[i];i++)
+    for(i=0;a[i];i++)
     {
        if(a[i]>='A' && a[i]<='Z')
           b[i]=((a[i]-'A')-1+26)%26 + 'a';
@@ -42,15 +51,17 @@ char* decode(char *a){
     return b;
 }
 
+//Checks if 2 strings are equal or not
 int equal(char* a, char* b){
   int i=0;
-  for(i=0;*(a+i) && *(b+i);i++){
+  for(i=0;*(a+i) || *(b+i);i++){
     if(*(a+i)!=*(b+i))
        return 0;
   }
   return 1;
 }
 
+// For passing the length check up
 int lenpass(char a[]){
   int i=0;
   for(i=0;a[i];i++){}
@@ -59,6 +70,7 @@ int lenpass(char a[]){
   return 0;
 }
 
+// Check wether the password contains required characters or not
 int charcheck(char a[]){
   int c1=0,c2=0,c3=0,i=0;
   for(i=0;a[i];i++){
@@ -75,4 +87,16 @@ int charcheck(char a[]){
     return 1;
   else
     return 0;
+}
+
+void corrector(char a[10][100]){
+         int i=0,j=0;
+         for(0;i<10;i++){
+          if(a[i][0]!='\n')
+            continue;
+              for(j=0;a[i][j];j++){
+                  a[i][j]=a[i][j+1];
+              }
+              a[i][j]='\0';
+         }
 }

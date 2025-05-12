@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "auth.c"
 #include "data.c"
-#include "File_opr.c"
 
 int main()
 {
@@ -9,7 +8,6 @@ int main()
     char* a;
     FILE* fp=fopen("Pass.goofy_ahh","r");
     if(fp == NULL){
-       fclose(fp);
        adduser();
        initAuth();
        clean();
@@ -17,7 +15,7 @@ int main()
     } 
     else if(!authenticator()){
         fclose(fp);
-        printf("Sorry! Looks like you forgot your password");
+        printf("Sorry! Looks like you forgot your password or the username\n");
         printf("Now enter your choice\n1 for adding new user(requires permission of owner)\n2 for exiting\n");
         scanf("%d",&ch2);
         
@@ -28,6 +26,8 @@ int main()
     }
     
     alloc();
+    dated();
+    clean();
     do{
         printf("Welcome to grovcery management system, Here You can easily manage your inventory\n");
         printf("Enter \n1 for buying\n2 for selling\n3 for seeing stock\n4 for exit\n");
@@ -52,6 +52,8 @@ int main()
         }
     }while(ch!=4);
     printf("Thankyou for using our software\n");
+    dsave();
     dealloc();
+    clean();
     return 0;
 }

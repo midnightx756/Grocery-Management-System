@@ -4,7 +4,7 @@
 
 //The Authentication module of the program
 
-//Checks wether the password is strong or not
+//Checks whether the password is strong or not
 int netvalidity(char a[]){
     if(lenpass(a) && charcheck(a))
       return 1;
@@ -16,6 +16,10 @@ int netvalidity(char a[]){
 void initAuth() {
     char pass[100];
     char* encpass= (char*)malloc(100*sizeof(char));
+    if(encpass == NULL){
+        printf("Memory could not be allocated successfully");
+        exit(0);
+     }
     while(!netvalidity(pass)){
         getchar();
         printf("Please create a password: ");
@@ -27,6 +31,10 @@ void initAuth() {
     FILE* fp;
     char fname[]="Pass.goofy_ahh";
     fp=fopen(fname,"a");
+    if(fp == NULL){
+        printf("File could not be opened successfully");
+        exit(0);
+     }
     fprintf(fp,"%s\n", encpass);
     fclose(fp);
     free(encpass);
@@ -35,7 +43,7 @@ void initAuth() {
 //Function to check the credentials login module
 int authenticator(){
     char enterpass[100],username[100];
-    char ru[100][50], rp[100][20];
+    char ru[100][100], rp[100][20];
     int i=0,j,k,c=0;
     FILE* fp;
     char fname[]="Pass.goofy_ahh", g[100],*pass;
@@ -74,7 +82,7 @@ int authenticator(){
     }
     printf("Enter the password dear %s\n", username);
     for(i=1;i<=5;i++){
-       printf("Enter the created password: ");
+       printf("Enter the created password you have %d tries left: ",6-i);
        scanf(" %[^\n]s",enterpass);
        getchar();
        if(equal(pass,enterpass))
@@ -96,7 +104,15 @@ int authenticator(){
 //Adds user for the first time
 void adduser(){
     char* a=(char*)malloc(100*sizeof(char));
+    if(a==NULL){
+       printf("Memory failed to allocate");
+       exit(0);
+    }
     FILE* fp = fopen("Pass.goofy_ahh","a");
+    if(fp==NULL){
+         printf("The file could not be opened");
+         exit(0);
+    }
     printf("Enter your username without any space: ");
     scanf(" %[^\n]s",a);
     fprintf(fp,"%s ",a);
