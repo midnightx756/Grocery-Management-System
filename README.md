@@ -18,6 +18,10 @@ By implementing the GMS, departmental stores can:
 
 The GMS will provide a user-friendly interface for store owners and staff to easily navigate and manage their grocery inventory, ultimately leading to increased productivity and profitability.
 
+To compile my code and test it use the following commands on linux:
+gcc main.c
+./a.out
 
 And my info:
 I am Graahil Rastogi
+Class Roll no: 34
