@@ -22,6 +22,17 @@ Items im;
 
 void alloc(){
   im.inv_val=(float*)calloc(10, sizeof(float));
+ int i=0,j=0;
+ for(;i<10;i++){
+      for(j=0;j<2;j++){
+         im.price[i][j]=0.0;
+         im.profl[i][j]=0.0;
+      }
+      im.inv_val[i]=0.0;
+      for(j=0;j<3;j++){
+         im.qnty[i][j]=0;
+      }
+ }
   if(im.inv_val==NULL){
      printf("Failed to allocate Memory");
      exit(0);

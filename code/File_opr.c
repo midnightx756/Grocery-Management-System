@@ -31,13 +31,14 @@ void save(char n[10][100], int q[10][3], float p[10][2], float pe[10][2], float 
      printf("Sorry but the file could not be allocated");
      exit(0);
    }
+   fseek(saver,0,SEEK_END);
    fprintf(saveind,"EOF: %ld",ftell(saver));
    fclose(saveind);
    fprintf(saver,"%d/%d/%d\n",d,m,y);
    for(i=0;i<10;i++){
-    fprintf(saver,"%s %d %d %d %f %f %f %f %f\n",n[i],q[i][0],q[i][1],q[i][2],p[i][0],p[i][1],pe[i][0],pe[i][1],in[i]);
+    fprintf(saver,"%s: %d %d %d %f %f %f %f %f\n",n[i],q[i][0],q[i][1],q[i][2],p[i][0],p[i][1],pe[i][0],pe[i][1],in[i]);
        }
-   fprintf(saver,"%s","\n");
+   fprintf(saver,"\n");
    fclose(saver);
 }
 
@@ -66,6 +67,7 @@ void readbackup(char a[10][100], int b[10][3]){
 void appender(int b[10][3], float c[10][2], unsigned int d, unsigned int m, unsigned int y){
    FILE* fp = fopen("table.txt", "a+"), *read = fopen("ind.txt","r");
    int i=0,eof;
+   char temp[200];
    unsigned int da,mo,ye;
    if(fp==NULL || read==NULL){
       printf("File could not not be opened");
@@ -77,7 +79,7 @@ void appender(int b[10][3], float c[10][2], unsigned int d, unsigned int m, unsi
    if(eof>0){
       fseek(fp,-1,SEEK_CUR);
    }
-   while(fscanf(fp,"%*s %d %d %d %f %f %*f %*f %*f", &b[i][0], &b[i][1], &b[i][2], &c[i][0], &c[i][1])==6){
+   while(fscanf(fp,"%[^:]: %d %d %d %f %f %*f %*f %*f",temp,  &b[i][0], &b[i][1], &b[i][2], &c[i][0], &c[i][1])==6){
        b[i][0]+=b[i][1]-b[i][2];
        b[i][1]=0;
        b[i][2]=0;
