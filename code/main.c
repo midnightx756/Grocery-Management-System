@@ -32,7 +32,7 @@ int main()
     clean();
     do{
         printf("Welcome to grovcery management system, Here You can easily manage your inventory\n");
-        printf("Enter \n1 for buying\n2 for selling\n3 for seeing stock\n4 for seeing a stock of particular date\n5 for printing the stoxk in a particular month and year\n6 for exiting\n");
+        printf("Enter \n1 for buying\n2 for selling\n3 for seeing stock\n4 for seeing a stock of particular date\n5 for printing the stock in a particular month and year\n6 for exiting\n");
         printf("Enter your choice: ");
         scanf("%d",&ch);
         switch(ch){
