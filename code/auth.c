@@ -55,7 +55,10 @@ int authenticator(){
     }
 
     while(fscanf(fp,"%s%s",ru[i], rp[i])==2)
-       i++;
+    {   
+          uTS(ru[i]);
+          i++;
+    }
     
     k=i;
     for(i=1;i<=3;i++){
@@ -113,8 +116,9 @@ void adduser(){
          printf("The file could not be opened");
          exit(0);
     }
-    printf("Enter your username without any space: ");
+    printf("Enter your username without any underscore, but spaces are accepted: ");
     scanf(" %[^\n]s",a);
+    sTU(a);
     fprintf(fp,"%s ",a);
     fclose(fp);
 }
@@ -141,10 +145,22 @@ void addnewuser(){
 
    //Here I'm checking wether the user has the permission of the owner
    if(equal(dec, entpass)){
-    printf("You have successfully entered the password\nPlease enter the new username:");
+    printf("You have successfully entered the password\nPlease enter the new username, spaces are acceptable:");
     scanf(" %[^\n]s", uname);
+    getchar();
+    sTU(uname);
+    
+    // To check if new user has inputted a weak password
+    while(1){
     printf("Input the password: ");
     scanf(" %[^\n]s", pass);
+    getchar();
+      if(netvalidity(pass)!=1)
+            printf("Please create a stronger password\n");
+      else
+         break;
+    }
+    
     fprintf(fp,"%s %s\n", uname, encode(pass));
     fclose(fp);
     free(dec);

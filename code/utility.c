@@ -32,10 +32,11 @@ void sell(char n[10][100], int a[10][3], float b[10][2]){
             scanf("%d",&q);
             if(a[i][0]+a[i][1]>=q){
                  a[i][2]+=q;
-                 printf("Enter the net selling price: ");
+                 printf("Enter the selling price for 1 item: ");
                  scanf("%f",&price);
-                 b[i][1]+=price;
+                 b[i][1]+=price*q;
             }
+          else
             printf("The stock is less than what your input\n");
         }
     }while(i<10);

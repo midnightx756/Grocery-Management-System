@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include "string_former.c"
+#include "date.c"
 #include "auth.c"
 #include "data.c"
 
@@ -30,7 +32,7 @@ int main()
     clean();
     do{
         printf("Welcome to grovcery management system, Here You can easily manage your inventory\n");
-        printf("Enter \n1 for buying\n2 for selling\n3 for seeing stock\n4 for exit\n");
+        printf("Enter \n1 for buying\n2 for selling\n3 for seeing stock\n4 for seeing a stock of particular date\n5 for printing the stoxk in a particular month and year\n6 for exiting\n");
         printf("Enter your choice: ");
         scanf("%d",&ch);
         switch(ch){
@@ -49,11 +51,26 @@ int main()
                if(ch1==1)
                   clean();
                break;
+           case 4: 
+              dateddate();
+               printf("Do You want to clear the screen:\n1 for yes\n2 for no: ");
+               scanf("%d",&ch1);
+               if(ch1==1)
+                  clean();
+              break;
+           case 5: 
+               printdata();
+               printf("Do You want to clear the screen:\n1 for yes\n2 for no: ");
+               scanf("%d",&ch1);
+               if(ch1==1)
+                  clean();
+              break;
         }
-    }while(ch!=4);
+    }while(ch!=6);
     printf("Thankyou for using our software\n");
     dsave();
     dealloc();
+    for(ch=0;ch<1000;ch++);
     clean();
     return 0;
 }
