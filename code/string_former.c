@@ -17,3 +17,12 @@ void uTS(char a[]){
             }
       }
 }
+/*
+void main(){
+     char str[100] =  "Hello Dragon Knight";
+     printf("Orignal string: %s\n", str);
+     sTU(str);
+      printf("Replaced spaces with underscore: %s\n", str);
+      uTS(str);
+         printf("Replaced spaces with underscore: %s\n", str);
+}*/

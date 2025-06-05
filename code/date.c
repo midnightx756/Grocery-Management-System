@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+//#include "string_former.c"
 
 void dateddate(){
     FILE * data= fopen("table.txt", "r+");
@@ -76,3 +77,8 @@ void printdata(){
           ci = fscanf(dreader, "%c", &(char){'\0'});
      }
 }
+
+/*void main(){
+   // dateddate();
+    printdata();
+}*/

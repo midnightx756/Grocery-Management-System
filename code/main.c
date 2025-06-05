@@ -4,6 +4,9 @@
 #include "auth.c"
 #include "data.c"
 
+/*
+A Grocery Management System (GMS) is a software application designed to help a departmental store track, mangae, and streamline the process of purchasing, stocking, and and selling groceries (make it for 10 items). It can be used by grocery store owners to maimntain an organized inventoryand ensure ensure the efficient running of operations.
+*/
 int main()
 {
     int ch,ch1, ch2;

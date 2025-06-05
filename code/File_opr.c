@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
+//#include "string_former.c"
+//#include "strs.c"
 
 void clean()
 {
@@ -88,3 +90,19 @@ void appender(int b[10][3], float c[10][2], unsigned int d, unsigned int m, unsi
    }
    fclose(fp);
 }
+
+/*
+void main(){
+     char a[10][100]={"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
+       int  qn [10][3]={100, 0, 0};
+       float pr[10][2], prol[10][2], iv[10];
+       unsigned d1,d2, d3;
+       readbackup(a, qn);
+       appender(qn, pr, d1, d2, d3);
+       corrector(a);
+       for(int i=0;i<10;i++)
+           printf("%s %d %d %d %f %f \n", a[i],qn[i][0],qn[i][1],qn[i][2],pr[i][0],pr[i][1]);
+      for(int i=0;i<100;i++)
+         printf("\n");
+}
+*/
